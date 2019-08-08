@@ -1,5 +1,5 @@
 import enums from '../config/enums'
-import '../css/main.css'
+import '../styles/main.css'
 
 export function getMatchingLines(wordIndex, vowelCount, lineCount, lines) {
   const newLines = [...lines]
