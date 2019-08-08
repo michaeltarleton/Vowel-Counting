@@ -42,7 +42,7 @@ function _generateResults(lines) {
 
 function _matchWordsInLine(line, wordIndex) {
   // Remove all punctuations and special characters to get just the plain words
-  const wordArray = line.match(/[^\W]+/g)
+  const wordArray = line.match(/[^\W\d]+/g)
 
   return wordArray.map((word, index) => {
     const isConsidered = (index + 1) % wordIndex === 0
