@@ -12,7 +12,7 @@ export function getMatchingLines(wordIndex, vowelCount, lineCount, lines) {
 }
 
 export function printLines(lines) {
-  const body = document.querySelector('body')
+  const body = document.querySelector('#container')
   const lineContainer = document.createElement('ol')
 
   body.appendChild(lineContainer)
