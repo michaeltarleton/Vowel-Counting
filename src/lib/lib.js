@@ -1,7 +1,7 @@
 import enums from '../config/enums'
 import '../css/main.css'
 
-function _getMatchingLines(wordIndex, vowelCount, lineCount, lines) {
+export function getMatchingLines(wordIndex, vowelCount, lineCount, lines) {
   const newLines = [...lines]
   for (let i = lineCount - 1; i < newLines.length; i += lineCount) {
     newLines[i] = _matchWordsInLine(lines[i], wordIndex)
@@ -9,6 +9,17 @@ function _getMatchingLines(wordIndex, vowelCount, lineCount, lines) {
       .map(_addWordStylesAsNeeded)
   }
   return newLines
+}
+
+export function printLines(lines) {
+  const body = document.querySelector('body')
+  const lineContainer = document.createElement('ol')
+
+  body.appendChild(lineContainer)
+
+  lines.forEach(line => {
+    lineContainer.appendChild(_generateLine(line))
+  })
 }
 
 function _matchWordsInLine(line, wordIndex) {
@@ -60,19 +71,6 @@ function _styleMatch(word, isMatch) {
   return wordElement
 }
 
-function _printLines(lines) {
-  const body = document.querySelector('body')
-  const lineContainer = document.createElement('ol')
-
-  body.appendChild(lineContainer)
-
-  lines.forEach(line => {
-    lineContainer.appendChild(_generateLine(line))
-  })
-
-  console.log(lines)
-}
-
 function _generateLine(line) {
   const lineContainer = document.createElement('li')
   const lineChild = typeof line === 'string' ? _generateStringLine(line) : _generateArrayLine(line)
@@ -107,9 +105,4 @@ function _generateArrayLine(wordsArrayObj) {
   span.innerHTML = span.innerHTML.trim()
 
   return span
-}
-
-export {
-  _getMatchingLines as getMatchingLines,
-  _printLines as printLines
 }
