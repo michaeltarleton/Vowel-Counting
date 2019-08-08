@@ -1,0 +1,18 @@
+#container {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    flex-direction: column;
+}
+
+.matched-word {
+    font-weight: bold
+}
+
+.non-matched-word {
+    color: red
+}
+
+.non-considered-line {
+    color: gray
+}
