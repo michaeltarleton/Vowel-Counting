@@ -20,6 +20,24 @@ export function printLines(lines) {
   lines.forEach(line => {
     lineContainer.appendChild(_generateLine(line))
   })
+
+  lineContainer.appendChild(_generateResults(lines))
+}
+
+function _generateResults(lines) {
+  const span = document.createElement('p')
+  const lineCount = lines.filter(line => typeof line === 'object').length
+  const wordCount = lines.map(line => {
+    if(typeof line === 'string') {
+      return 0
+    }
+    return line.filter(wordObj => wordObj.isMatch).length
+  })
+  .reduce((total, wordCount) => total += wordCount, 0)
+
+  span.innerHTML =  `Results: Lines: ${lineCount}, words: ${wordCount}`
+
+  return span
 }
 
 function _matchWordsInLine(line, wordIndex) {
